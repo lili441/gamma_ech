@@ -1,0 +1,141 @@
+@if (message !==''){
+<h3 class="text-success">{{ message }}</h3>
+} @if (errors !==''){
+<h3 class="text-danger">{{ errors }}</h3>
+}
+<div class="card">
+  <div class="card-header">Modification du groupe {{ group.name }}</div>
+  <div class="card-body">
+    <form #groupForm="ngForm" (ngSubmit)="onSubmit(groupForm)">
+      <div class="form-group row padding-buttom-5">
+        <label for="name" class="col-sm-2 col-form-label">Nom du groupe</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="group.name"
+            required
+            name="name"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="origin" class="col-sm-2 col-form-label">Origine</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="group.origin"
+            required
+            name="origin"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="city" class="col-sm-2 col-form-label">Ville</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="group.city"
+            required
+            name="city"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="startDate" class="col-sm-2 col-form-label"
+          >Année début
+        </label>
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="group.startDate"
+            required
+            name="startDate"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="endDate" class="col-sm-2 col-form-label">
+          Année séparation
+        </label>
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="group.endDate"
+            name="endDate"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="creator" class="col-sm-2 col-form-label">Fondateurs</label>
+        <div class="col-sm-10">
+          <textarea
+            class="form-control"
+            rows="3"
+            [(ngModel)]="group.creator"
+            name="creator"
+          ></textarea>
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="member" class="col-sm-2 col-form-label">Membres</label>
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="group.member"
+            name="member"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="musicalStyle" class="col-sm-2 col-form-label"
+          >Courant musical</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="group.musicalStyle"
+            name="musicalStyle"
+          />
+        </div>
+      </div>
+      <div class="form-group row padding-buttom-5">
+        <label for="description" class="col-sm-2 col-form-label"
+          >Présentation</label
+        >
+        <div class="col-sm-10">
+          <textarea
+            class="form-control"
+            rows="3"
+            [(ngModel)]="group.description"
+            name="description"
+          ></textarea>
+        </div>
+      </div>
+      <br />
+      <div class="form-group">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!groupForm.valid"
+        >
+          Modifier
+        </button>
+        <div class="space"></div>
+        <button
+          type="button"
+          [routerLink]="['/group/show/' + group.id]"
+          class="btn btn-secondary"
+        >
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

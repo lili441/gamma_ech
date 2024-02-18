@@ -1,0 +1,21 @@
+<div class="file-upload-container">
+  <div class="padding-buttom-width">
+    <h2>Vous pouvez importer votre fichier ici :</h2>
+    <input
+      type="file"
+      id="formFile"
+      class="form-control form-control-lg"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+  @if (message !==''){
+  <h4 class="text-danger">{{ message }}</h4>
+  }
+  <button
+    class="btn btn-primary"
+    [disabled]="message !== ''"
+    (click)="uploadFile()"
+  >
+    Télécharger
+  </button>
+</div>

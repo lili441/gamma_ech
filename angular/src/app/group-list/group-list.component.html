@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>La liste des groupes</h1>
+  @if (message !==''){
+  <h2 class="text-success">{{ message }}</h2>
+  } @if (errors !==''){
+  <h2 class="text-danger">{{ errors }}</h2>
+  } @if(groups && groups.length > 0) {
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <!-- <th scope="col">ID</th> -->
+        <th scope="col">Nom du groupe</th>
+        <th scope="col">Origine</th>
+        <th scope="col">Ville</th>
+        <th scope="col">Année début</th>
+        <th scope="col">Année séparation</th>
+        <th scope="col">Fondateurs</th>
+        <th scope="col">Membres</th>
+        <th scope="col">Courant musical</th>
+        <th scope="col">Présentation</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (group of groups; track group.id){
+      <tr>
+        <!-- <td scope="row">{{ group.id }}</td> -->
+        <td>{{ group.name }}</td>
+        <td>{{ group.origin }}</td>
+        <td>{{ group.city }}</td>
+        <td>{{ group.startDate }}</td>
+        <td>{{ group.endDate }}</td>
+        <td>{{ group.creator }}</td>
+        <td>{{ group.member }}</td>
+        <td>{{ group.musicalStyle }}</td>
+        <td>{{ group.description }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            [routerLink]="['/group/show', group.id]"
+          >
+            Voir
+          </button>
+          <button class="btn btn-outline-success" (click)="editGroup(group.id)">
+            Modifier
+          </button>
+          <button
+            class="btn btn-outline-danger"
+            (click)="deleteGroup(group.id)"
+          >
+            Supprimer
+          </button>
+          <router-outlet></router-outlet>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else {
+  <p>La liste est vide, merci d'importer vos données</p>
+  }
+</div>
