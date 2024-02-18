@@ -1,1 +1,1 @@
-# gamma_ech
+# Projet Gamma
