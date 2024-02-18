@@ -1,0 +1,17 @@
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+group_list:
+  path: /group
+  controller: App\Controller\GroupController::getGroup
+group_create:
+  path: /group/create
+  controller: App\Controller\GroupController::createGroup
+groupe_update:
+  path: /group/update/{id}
+  controller: App\Controller\GroupController::updateGroup
+groupe_delete:
+  path: /group/delete/{id}
+  controller: App\Controller\GroupController::deleteGroup
